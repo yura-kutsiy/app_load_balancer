@@ -19,7 +19,7 @@ resource "aws_instance" "ubuntu_1" {
   ami             = data.aws_ami.latest_ubuntu.id
   instance_type   = var.instance_type
   security_groups = [aws_security_group.sg_1.id]
-  user_data       = file("server1.sh")
+  user_data       = file("server.sh")
   subnet_id       = aws_subnet.subnet_a.id
   key_name        = var.key_pair
   depends_on      = [aws_internet_gateway.gw]
@@ -31,7 +31,7 @@ resource "aws_instance" "ubuntu_2" {
   ami             = "ami-05f7491af5eef733a"
   instance_type   = var.instance_type
   security_groups = [aws_security_group.sg_1.id]
-  user_data       = file("server2.sh")
+  user_data       = file("server.sh")
   subnet_id       = aws_subnet.subnet_b.id
   key_name        = var.key_pair
   depends_on      = [aws_internet_gateway.gw]
